@@ -59,10 +59,13 @@ while(cont < qntPares){
 }
 console.log(listaDisplay);
 let containter = document.querySelector('.container');
+
 cont= 0;
 while(cont < listaDisplay.length) {
-    containter.innerHTML = listaDisplay[cont];
+    containter.innerHTML += listaDisplay[cont];
+    cont++;
 }
+console.log();
 
 
 
