@@ -61,12 +61,12 @@ button{
   .back-face {
     transform: rotateY(180deg);
   }
-
-  .card:hover .back-face {
+  /*onclick*/
+ .backClick {
     transform: rotateY(0deg);
   }
-
-  .card:hover .front-face {
+  /*onclick*/
+  .frontClick {
     transform: rotateY(-180deg);
   }
 img{

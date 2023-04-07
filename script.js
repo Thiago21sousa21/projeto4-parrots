@@ -35,7 +35,7 @@ const listaImgs = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif",
 let listaBase=[];
     let cont = 0;
     while(cont<7){
-    listaBase[cont] = ` <div class="card">
+    listaBase[cont] = ` <div onclick="clicaVira(this)" class="card">
                             <div class="front-face face">
                                 <img src="./midia/Arquivos Úteis - Projeto 04 - Parrot Card Game/back.png"/>
                             </div>
@@ -67,5 +67,10 @@ while(cont < listaDisplay.length) {
 }
 console.log();
 
+function clicaVira(CartaInteira){
+    const frente = CartaInteira.querySelector('.front-face')
+    frente.classList.add('frontClick');
+    const traseira = CartaInteira.querySelector('.back-face')
+    traseira.classList.add('backClick');
 
-
+}
