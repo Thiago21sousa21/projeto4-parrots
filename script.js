@@ -41,10 +41,10 @@ while(cont < qntPares){
     cont++;
 }
 
-listaDisplay.sort(comparador); // Após esta linha, a minhaArray estará embaralhada
+listaDisplay.sort(misturar); // Após esta linha, a minhaArray estará embaralhada
 
 // Esta função pode ficar separada do código acima, onde você preferir
-function comparador() { 
+function misturar() { 
 	return Math.random() - 0.5; 
 }
 
