@@ -1,5 +1,6 @@
 let chave;
 let qntCartas;
+let nJogadas =0;
 while(chave != 0){
     qntCartas = prompt('Quantas cartas tu queres? Escolha um número par entre 4 a 14!');
     qntCartas = Number(qntCartas);
@@ -20,13 +21,13 @@ const listaImgs = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif",
 let listaBase=[];
     let cont = 0;
     while(cont<7){
-    listaBase[cont] = ` <div onclick="clicaVira(this)" class="card funcional">
+    listaBase[cont] = ` <div onclick="clicaVira(this)" class="card funcional" data-test="card">
                             <div class="nomeCarta">${listaImgs[cont]}</div>
                             <div class="front-face face">
-                                <img src="./midia/Arquivos Úteis - Projeto 04 - Parrot Card Game/back.png"/>
+                                <img data-test="face-down-image" src="./midia/Arquivos Úteis - Projeto 04 - Parrot Card Game/back.png"/>
                             </div>
                             <div class="back-face face">
-                                <img src="./midia/Arquivos Úteis - Projeto 04 - Parrot Card Game/${listaImgs[cont]}"/>
+                                <img data-test="face-up-image" src="./midia/Arquivos Úteis - Projeto 04 - Parrot Card Game/${listaImgs[cont]}"/>
                             </div>
                         </div>
                         `;
@@ -60,17 +61,20 @@ while(cont < listaDisplay.length) {
 let variavelBloqueio = document.querySelectorAll('.card');
 let comparador = [];
 let guardaTag = [];
+let atualizaVirada = document.querySelectorAll('.virada');
 
 function verificaIgualdade () {
     if(comparador[0] === comparador[1]){
         let variavelDevolve = document.querySelectorAll('.funcional');
-        console.log(variavelDevolve);
         for(let i=0; i<variavelDevolve.length; i++){
             variavelDevolve[i].setAttribute('onclick',"clicaVira(this)");
         }
         comparador = [];
         guardaTag = [];
 
+        if(atualizaVirada.length == listaDisplay.length){
+            alert(`Você ganhou em ${nJogadas} jogadas!`);
+        } 
 
     }else if(comparador[0]!== comparador[1]){
         guardaTag[0].classList.remove('virada');
@@ -99,11 +103,14 @@ function verificaIgualdade () {
 }
 
 function clicaVira(CartaInteira){
+    nJogadas++;
     let frente = CartaInteira.querySelector('.front-face')
     frente.classList.add('frontClick');
     let traseira = CartaInteira.querySelector('.back-face')
     traseira.classList.add('backClick');
     CartaInteira.classList.add('virada');
+    atualizaVirada = document.querySelectorAll('.virada');
+    console.log(atualizaVirada);
 
     let nomeCarta = CartaInteira.querySelector('.nomeCarta').innerHTML;
 
@@ -122,3 +129,4 @@ function clicaVira(CartaInteira){
     setTimeout(verificaIgualdade, 1000);
     }
 }
+
